@@ -12,13 +12,20 @@ using System.Threading.Tasks;
 //  Inheritance:            | Composition:
 //* is-a relationship       | has-a relationship
 //* square is a rectangle   | car has an engine 
+
+
+// Benefits of Composition:
+// * Code re-use
+// * Flexibility
+// * Means to loose-coupling
+
 namespace Composition
 {
-    public class DbMigrator
+    public class DbMigrator // requires logging
     {
-    private readonly Logger logger;
+    private readonly Logger logger; // declared logger field of the Logger class
 
-    public DbMigrator(Logger logger)
+    public DbMigrator(Logger logger) // Logger class method in parameter of the constructor
     {
         this.logger = logger;
     }
@@ -27,25 +34,25 @@ namespace Composition
         logger.Log("We are migrating sdsdasd");
     }
 }
-public class Installer
+public class Installer // requires logging
 {
-    private readonly Logger logger;
+    private readonly Logger logger; // declared logger field of the Logger class
 
-    public Installer(Logger logger)
-    {
-        this.logger = logger;
-    }
+    public Installer(Logger logger) // Logger class method in parameter of the constructor
+        {
+            this.logger = logger;
+        }
     public void Install()
-    {
-        logger.Log("We are installing the application.");
-    }
+        {
+            logger.Log("We are installing the application.");
+        }
 }
 public class Logger
 {
     public void Log(string message)
-    {
-        Console.WriteLine(message);
-    }
+        {
+            Console.WriteLine(message);
+        }
 }
 
 
@@ -53,8 +60,8 @@ public class Logger
     {
         static void Main(string[] args)
         {
+            // creating objects for all classes:
             var dbMigrator = new DbMigrator(new Logger());
-            
             var logger = new Logger();
             var installer = new Installer(logger);
 
