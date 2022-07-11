@@ -19,6 +19,10 @@ using System.Threading.Tasks;
 // * Flexibility
 // * Means to loose-coupling
 
+// Inheritance
+// Pros: Code re-use, easier to understand
+// Cons: Tightly coupled, fragile, can be abused
+
 namespace Composition
 {
     public class DbMigrator // requires logging
